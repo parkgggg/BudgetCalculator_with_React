@@ -1,53 +1,52 @@
 import React from "react";
+import { MdSend } from 'react-icons/md';
+import "./Form.css";
 
-export default function Form({ handleSubmit, value, setValue, cost, setCost }) {
-  const handleChangeValue = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleChangeCost = (e) => {
-    setCost(e.target.value);
-  };
-
+const Form = ({
+  handleSubmit,
+  charge,
+  handleCharge,
+  cost,
+  handleCost,
+  edit,
+}) => {
   return (
-    <form
-      className="flex flex-wrap justify-center pt-2 items-center"
-      onSubmit={handleSubmit}
-    >
-        
-      <div className="w-1/2 p-2">
-        <p className="text-orange-400">지출 항목</p>
-        <input
-          type="text"
-          name="value"
-          className="w-full outline-0 border-b border-lime-700 px-3 py-2 mr-4 text-gray-500 "
-          placeholder="예) 렌트비"
-          value={value}
-          onChange={handleChangeValue}
-        ></input>
+    <form onSubmit={handleSubmit}>
+      {/* Submit 이벤트 발생 시 handleSubmit 호출 */}
+      <div className="form-center">
+        <div className="form-group">
+          <label htmlFor="charge">지출 항목</label>
+          <input
+            type="text"
+            className="form-control"
+            id="charge"
+            name="charge"
+            value={charge}
+            placeholder="예) 렌트비"
+            onChange={handleCharge}
+          />
+        </div>
       </div>
-      <div className="w-1/2">
-        <p className="text-orange-400">금액</p>
+      <div className="form-group">
+        <label htmlFor="charge">비용</label>
         <input
           type="number"
+          className="form-control"
+          id="cost"
           name="cost"
-          className="w-full outline-0 border-b border-lime-700 px-3 py-2 mr-4 text-gray-500 "
-          placeholder="예) 1000"
           value={cost}
-          onChange={handleChangeCost}
-        ></input>
+          placeholder="예) 렌트비"
+          onChange={handleCost}
+        />
       </div>
-      <div className="mr-auto px-2">
-      <input
-        type="submit"
-        className="p-2 text-sm text-white bg-lime-700 transition-all hover:scale-110 duration-300 rounded"
-        value="제출"
-      >
-        
-      </input>
-      
+      <div>
+        <button type="submit" className="btn">
+          {edit ? "수정" : "제출"}
+          <MdSend className="btn-icon"/>
+        </button>
       </div>
-
     </form>
   );
-}
+};
+
+export default Form

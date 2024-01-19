@@ -1,0 +1,18 @@
+function solution(genres, plays) {
+    var hash1 = new Map();
+    
+    //key:genre, value:총 합 (배열로 바꿔서 정렬)
+    genres.forEach((value, index) => {
+        if (hash1.has(value)) {
+            hash1.set(value, hash1.get(value)+plays[index]);
+        } else {
+            hash1.set(value, plays[index]);
+        }
+    })
+    
+    //key: genre, value: [[인덱스, 재생횟수], [인덱스, 재생횟수], []]인 맵 => 장르 순으로 추출해서 value 불러온 다음에 거기서 재생횟수->고유번호 순으로 정렬해서 2개씩 넣자
+    
+    
+    var answer = [];
+    return answer;
+}
